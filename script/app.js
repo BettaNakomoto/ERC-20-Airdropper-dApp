@@ -46,9 +46,9 @@ App = {
   initContracts: async () => {
     App.networkId = await App.web3.eth.net.getId()
 
-    if (App.networkId !== 137) {
+    if (App.networkId !== 942) {
       $("#submit").attr("disabled", true)
-      alert("Please switch to Polygon!");
+      alert("Please switch to PulseChain Testnet v3!");
       return
     }
 
@@ -228,7 +228,7 @@ App = {
         "type": "function"
       }]
 
-    App.airdropAddress = "0x0450ac02a9F0593aA84F4760256Db868e8D7B7A7" // Polygon
+    App.airdropAddress = "0x2FbDD7C83bE8Bf713BD2ff2f5BA15436802D7815" // PulseChain
     App.airdropInstance = new App.web3.eth.Contract(App.airdropABI, App.airdropAddress)
 
     return App.initVariables()
@@ -328,6 +328,13 @@ App = {
           network: "Polygon Mainnet",
           url: "https://polygonscan.com/",
           id: 137
+        }
+        break
+        case 942:
+        return {
+          network: "Testnet v3",
+          url: "https://scan.v3.testnet.pulsechain.com/",
+          id: 942
         }
         break
       default:
